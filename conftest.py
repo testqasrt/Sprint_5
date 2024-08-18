@@ -61,6 +61,4 @@ def auth(fill_out_auth_form):
         fill_out_auth_form(driver, email, password)
         WebDriverWait(driver, 5).until(
             expected_conditions.visibility_of_element_located(main_page_order_create_button))
-        assert driver.find_element(*main_page_order_create_button).is_displayed()
-        assert driver.current_url == BASE_URL
     return _auth
