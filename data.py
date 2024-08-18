@@ -1,6 +1,6 @@
 class NewUser:
     name = 'fsdf'
-    email = 'ambcffsvвfffldcesfdffdkd@m.ru'
+    email = 'ambcffsvfdfffldcesfdffdkd@m.ru'
     password = 'abcded'
 
 
