@@ -7,9 +7,9 @@ from urls import BASE_URL
 
 class TestConstructor:
     @pytest.mark.parametrize('section',
-                             ((By.XPATH, bun_button),
-                              (By.XPATH, sauce_button),
-                              (By.XPATH, filling_button)))
+                             (bun_button,
+                              sauce_button,
+                              filling_button))
     def test_сonstructor_page_go_to_section(self, driver, section):
         driver.get(BASE_URL)
         element = driver.find_element(*section)

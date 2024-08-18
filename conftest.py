@@ -38,19 +38,19 @@ def driver(headless):
 @pytest.fixture
 def fill_out_registration_form():
     def _fill_out_form(driver, name, email, password):
-        driver.find_element(By.XPATH, form_name_input).send_keys(name)
-        driver.find_element(By.XPATH, form_email_input).send_keys(email)
-        driver.find_element(By.XPATH, form_password_input).send_keys(password)
-        driver.find_element(By.CSS_SELECTOR, form_button).click()
+        driver.find_element(*form_name_input).send_keys(name)
+        driver.find_element(*form_email_input).send_keys(email)
+        driver.find_element(*form_password_input).send_keys(password)
+        driver.find_element(*form_button).click()
     return _fill_out_form
 
 
 @pytest.fixture
 def fill_out_auth_form():
     def _fill_out_form(driver, email, password):
-        driver.find_element(By.XPATH, form_email_input).send_keys(email)
-        driver.find_element(By.XPATH, form_password_input).send_keys(password)
-        driver.find_element(By.CSS_SELECTOR, form_button).click()
+        driver.find_element(*form_email_input).send_keys(email)
+        driver.find_element(*form_password_input).send_keys(password)
+        driver.find_element(*form_button).click()
     return _fill_out_form
 
 
@@ -59,8 +59,8 @@ def auth(fill_out_auth_form):
     def _auth(driver, email, password):
         driver.get(LOGIN_PAGE_URL)
         fill_out_auth_form(driver, email, password)
-        WebDriverWait(driver, 5).until(expected_conditions.visibility_of_element_located(
-            (By.XPATH, main_page_order_create_button)))
-        assert driver.find_element(By.XPATH, main_page_order_create_button).is_displayed()
+        WebDriverWait(driver, 5).until(
+            expected_conditions.visibility_of_element_located(main_page_order_create_button))
+        assert driver.find_element(*main_page_order_create_button).is_displayed()
         assert driver.current_url == BASE_URL
     return _auth
